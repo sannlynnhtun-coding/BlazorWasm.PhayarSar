@@ -1,0 +1,55 @@
+﻿@page "/phayarsarDetails/{groupId:int}"
+@inject HttpClient HttpClient
+
+<PageTitle>Phayarsar</PageTitle>
+
+<h3>PhayarsarDetails</h3>
+
+@if (phayarsarDetail == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>groupId</th>
+                <th>title</th>
+                <th>content</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in phayarsarDetail)
+            {
+                <tr>
+                    <td>@item.id</td>
+                    <td>@item.groupId</td>
+                    <td>@item.title</td>
+                    <td>@item.content</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    [Parameter]
+    public int groupId { get; set; }
+
+    private PhayarsarDetail[]? phayarsarDetail;
+
+    public class PhayarsarDetail
+    {
+        public int id { get; set; }
+        public int groupId { get; set; }
+        public string title { get; set; }
+        public string content { get; set; }
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        phayarsarDetail = await HttpClient.GetFromJsonAsync<PhayarsarDetail[]>($"data/{groupId}/data.json");
+    }
+}

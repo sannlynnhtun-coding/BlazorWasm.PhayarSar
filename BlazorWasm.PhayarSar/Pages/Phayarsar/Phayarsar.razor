@@ -1,0 +1,53 @@
+﻿@page "/phayarsar"
+@inject HttpClient HttpClient
+@inject NavigationManager Navigation
+
+<PageTitle>Phayarsar</PageTitle>
+
+<h1>Phayarsar</h1>
+
+@if (phayarsars == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var phayarsar in phayarsars)
+            {
+                <tr @onclick="@(() => OnPhayarsarClick(phayarsar.groupId))">
+                    <td>@phayarsar.groupId</td>
+                    <td>@phayarsar.Title</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private Phayarsars[]? phayarsars;
+
+    protected override async Task OnInitializedAsync()
+    {
+        phayarsars = await HttpClient.GetFromJsonAsync<Phayarsars[]>("data/data.json");
+    }
+
+    public class Phayarsars
+    {
+        public int groupId { get; set; }
+
+        public string Title { get; set; }
+    }
+
+    private void OnPhayarsarClick(int groupId)
+    {
+        Navigation.NavigateTo($"/phayarsarDetails/{groupId}");
+    }
+}
