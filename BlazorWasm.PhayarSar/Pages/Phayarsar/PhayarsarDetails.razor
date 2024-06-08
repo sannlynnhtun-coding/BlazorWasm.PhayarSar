@@ -1,55 +1,69 @@
-﻿@page "/phayarsar/{groupId:int}"
+﻿@page "/phayarsarDetails/{title}"
 @inject HttpClient HttpClient
 
 <PageTitle>Phayarsar</PageTitle>
 
-<h3>PhayarsarDetails</h3>
-
-@if (phayarsarDetail == null)
+@if (groupData == null)
 {
     <p><em>Loading...</em></p>
 }
 else
 {
-    <table class="table">
-        <thead>
-            <tr>
-                <th>id</th>
-                <th>groupId</th>
-                <th>title</th>
-                <th>content</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in phayarsarDetail)
-            {
-                <tr>
-                    <td>@item.id</td>
-                    <td>@item.groupId</td>
-                    <td>@item.title</td>
-                    <td>@item.content</td>
-                </tr>
-            }
-        </tbody>
-    </table>
+    <h3>@groupData.Title</h3>
+
+    @if (groupData.Data == null || !groupData.Data.Any())
+    {
+        <p>No data available.</p>
+    }
+    else
+    {
+        <table class="table">
+            <tbody>
+                @foreach (var item in groupData.Data)
+                {
+                    <tr>
+                        <td>@item.Title</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
 }
 
 @code {
     [Parameter]
-    public int groupId { get; set; }
+    public string title { get; set; }
 
-    private PhayarsarDetail[]? phayarsarDetail;
+    private GroupData? groupData;
 
-    public class PhayarsarDetail
+    public class GroupData
     {
-        public int id { get; set; }
-        public int groupId { get; set; }
-        public string title { get; set; }
-        public string content { get; set; }
+        public int GroupId { get; set; }
+        public string Title { get; set; }
+        public List<DataItem> Data { get; set; }
+    }
+
+    public class DataItem
+    {
+        public int Id { get; set; }
+        public int GroupId { get; set; }
+        public string Title { get; set; }
+        public string Content { get; set; }
     }
 
     protected override async Task OnParametersSetAsync()
     {
-        phayarsarDetail = await HttpClient.GetFromJsonAsync<PhayarsarDetail[]>($"data/{groupId}/data.json");
+        try
+        {
+            var allGroups = await HttpClient.GetFromJsonAsync<GroupData[]>("data/data.json");
+            if (allGroups != null)
+            {
+                groupData = allGroups.FirstOrDefault(g => g.Title == title);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.Error.WriteLine($"Error fetching group data: {ex.Message}");
+        }
     }
 }

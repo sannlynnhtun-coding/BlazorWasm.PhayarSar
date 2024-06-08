@@ -4,7 +4,7 @@
 
 <PageTitle>Phayarsar</PageTitle>
 
-<h1>Phayarsar</h1>
+<h1>ဘုရားစာများ</h1>
 
 @if (phayarsars == null)
 {
@@ -13,17 +13,10 @@
 else
 {
     <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-            </tr>
-        </thead>
         <tbody>
             @foreach (var phayarsar in phayarsars)
             {
-                <tr @onclick="@(() => OnPhayarsarClick(phayarsar.groupId))">
-                    <td>@phayarsar.groupId</td>
+                <tr @onclick="@(() => OnPhayarsarClick(phayarsar.Title))">
                     <td>@phayarsar.Title</td>
                 </tr>
             }
@@ -41,13 +34,11 @@ else
 
     public class Phayarsars
     {
-        public int groupId { get; set; }
-
         public string Title { get; set; }
     }
 
-    private void OnPhayarsarClick(int groupId)
+    private void OnPhayarsarClick(string title)
     {
-        Navigation.NavigateTo($"/phayarsar/{groupId}");
+        Navigation.NavigateTo($"/phayarsarDetails/{title}");
     }
 }
