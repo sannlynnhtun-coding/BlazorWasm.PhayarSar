@@ -1,0 +1,66 @@
+﻿@page "/phayarsarContentDetails/{title}/{groupId:int}/{id:int}"
+@inject HttpClient HttpClient
+@inject NavigationManager Navigation
+
+
+<PageTitle>Phayarsar</PageTitle>
+
+@if (data == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <h3>@data.title</h3>
+
+    @if (data == null)
+    {
+        <p>No data available.</p>
+    }
+    else
+    {
+        <table class="table">
+            <tbody>
+                    <tr>
+                        <td>@data.content</td>
+                    </tr>
+                
+            </tbody>
+        </table>
+    }
+}
+
+@code {
+    [Parameter]
+    public int id { get; set; }
+    [Parameter]
+    public int groupId { get; set; }
+    [Parameter]
+    public string title { get; set; }
+
+    private Data? data;
+
+
+    public class Data
+    {
+        public int id { get; set; }
+        public int groupId { get; set; }
+        public string title { get; set; }
+        public string content { get; set; }
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        try
+        {
+            if (id > 0 && groupId > 0)
+            {
+                data = await HttpClient.GetFromJsonAsync<Data>($"data/{groupId}/{id}.json");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.Error.WriteLine($"Error fetching group data: {ex.Message}");
+        }
+    }
+}
