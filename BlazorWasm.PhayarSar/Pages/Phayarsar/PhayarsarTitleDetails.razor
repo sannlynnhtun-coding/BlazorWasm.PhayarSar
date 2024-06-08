@@ -1,5 +1,7 @@
-﻿@page "/phayarsarDetails/{title}"
+﻿@page "/phayarsarTitleDetails/{title}"
 @inject HttpClient HttpClient
+@inject NavigationManager Navigation
+
 
 <PageTitle>Phayarsar</PageTitle>
 
@@ -9,7 +11,7 @@
 }
 else
 {
-    <h3>@groupData.Title</h3>
+    <h3>@groupData.title</h3>
 
     @if (groupData.Data == null || !groupData.Data.Any())
     {
@@ -21,7 +23,7 @@ else
             <tbody>
                 @foreach (var item in groupData.Data)
                 {
-                    <tr>
+                    <tr @onclick="@(() => OnPhayarsarClick(item.Title,item.GroupId,item.Id))">
                         <td>@item.Title</td>
                     </tr>
                 }
@@ -38,8 +40,8 @@ else
 
     public class GroupData
     {
-        public int GroupId { get; set; }
-        public string Title { get; set; }
+        public int groupId { get; set; }
+        public string title { get; set; }
         public List<DataItem> Data { get; set; }
     }
 
@@ -58,12 +60,16 @@ else
             var allGroups = await HttpClient.GetFromJsonAsync<GroupData[]>("data/data.json");
             if (allGroups != null)
             {
-                groupData = allGroups.FirstOrDefault(g => g.Title == title);
+                groupData = allGroups.FirstOrDefault(g => g.title == title);
             }
         }
         catch (Exception ex)
         {
             Console.Error.WriteLine($"Error fetching group data: {ex.Message}");
         }
+    }
+    private void OnPhayarsarClick(string title,int groupId,int id)
+    {
+        Navigation.NavigateTo($"/phayarsarContentDetails/{title}/{groupId}/{id}");
     }
 }
