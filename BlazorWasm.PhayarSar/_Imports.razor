@@ -8,3 +8,10 @@
 @using Microsoft.JSInterop
 @using BlazorWasm.PhayarSar
 @using BlazorWasm.PhayarSar.Layout
+@using System.Web
+@using System.Net
+@using static BlazorWasm.PhayarSar.Pages.Phayarsar.PhayarsarContentDetails
+
+@inject HttpClient HttpClient
+@inject NavigationManager Navigation
+@inject IJSRuntime JsRuntime
