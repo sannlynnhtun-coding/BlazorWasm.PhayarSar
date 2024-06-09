@@ -1,7 +1,4 @@
-﻿@page "/phayarsarContentDetails/{title}/{groupId:int}/{id:int}"
-@inject HttpClient HttpClient
-@inject NavigationManager Navigation
-
+﻿@page "/phayarsar/{title}/{groupId:int}/{id:int}"
 
 <PageTitle>Phayarsar</PageTitle>
 
@@ -11,7 +8,9 @@
 }
 else
 {
-    <h3>@data.title</h3>
+
+    <h3 class="pt-4 pb-3">@data.title</h3>
+
 
     @if (data == null)
     {
@@ -31,17 +30,19 @@ else
 }
 
 @code {
-    [Parameter]
-    public int id { get; set; }
-    [Parameter]
-    public int groupId { get; set; }
-    [Parameter]
-    public string title { get; set; }
+    // [Parameter]
+    // public int id { get; set; }
+    // [Parameter]
+    // public int groupId { get; set; }
+    // [Parameter]
+    // public string title { get; set; }
 
-    private Data? data;
+    private DataDetail? data;
 
+    [Parameter]
+    public DataDetail Detail { get; set; }
 
-    public class Data
+    public class DataDetail
     {
         public int id { get; set; }
         public int groupId { get; set; }
@@ -53,9 +54,9 @@ else
     {
         try
         {
-            if (id > 0 && groupId > 0)
+            if (Detail.id > 0 && Detail.groupId > 0)
             {
-                data = await HttpClient.GetFromJsonAsync<Data>($"data/{groupId}/{id}.json");
+                data = await HttpClient.GetFromJsonAsync<DataDetail>($"data/{Detail.groupId}/{Detail.id}.json");
             }
         }
         catch (Exception ex)

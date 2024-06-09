@@ -1,34 +1,42 @@
-﻿@page "/phayarsarTitleDetails/{title}"
-@inject HttpClient HttpClient
-@inject NavigationManager Navigation
-
+﻿@page "/phayarsar/{title}"
 
 <PageTitle>Phayarsar</PageTitle>
 
-@if (groupData == null)
+@if (!isDetail)
 {
-    <p><em>Loading...</em></p>
-}
-else
-{
-    <h3>@groupData.title</h3>
-
-    @if (groupData.Data == null || !groupData.Data.Any())
+    if (groupData is null || groupData.Data is null)
     {
         <p>No data available.</p>
     }
     else
     {
-        <table class="table">
-            <tbody>
-                @foreach (var item in groupData.Data)
-                {
-                    <tr @onclick="@(() => OnPhayarsarClick(item.Title,item.GroupId,item.Id))">
-                        <td>@item.Title</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+        <div class="kioto_tm_title">
+            <h3 class="py-3">@groupData.title</h3>
+        </div>
+        <div class="text">
+            <table class="table">
+                <tbody>
+                    @foreach (var item in groupData.Data)
+                    {
+                        <tr>
+                            <td>
+                                <a href="javascript:void(0);" @onclick="@(() => OnPhayarsarClick(item))">
+                                    @item.Title
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+}
+else
+{
+    <button type="button" @onclick="Back" class="btn btn-dark">Back</button>
+    if (Detail is not null)
+    {
+        <PhayarsarContentDetails Detail="Detail" />
     }
 }
 
@@ -37,6 +45,8 @@ else
     public string title { get; set; }
 
     private GroupData? groupData;
+    private bool isDetail = false;
+    private DataDetail Detail;
 
     public class GroupData
     {
@@ -68,8 +78,23 @@ else
             Console.Error.WriteLine($"Error fetching group data: {ex.Message}");
         }
     }
-    private void OnPhayarsarClick(string title,int groupId,int id)
+
+    private void OnPhayarsarClick(DataItem item)
     {
-        Navigation.NavigateTo($"/phayarsarContentDetails/{title}/{groupId}/{id}");
+        // Navigation.NavigateTo($"/phayarsar/{title}/{groupId}/{id}");
+        Detail = new DataDetail
+            {
+                content = item.Content,
+                groupId = item.GroupId,
+                id = item.Id,
+                title = item.Title
+            };
+        isDetail = true;
+    }
+
+    private void Back()
+    {
+        // Navigation.NavigateTo($"/phayarsar/{WebUtility.UrlDecode(title)}");
+        isDetail = false;
     }
 }
