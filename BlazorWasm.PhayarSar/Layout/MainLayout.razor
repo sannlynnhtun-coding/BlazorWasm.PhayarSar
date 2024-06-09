@@ -1,16 +1,125 @@
 ﻿@inherits LayoutComponentBase
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
+
+
+<div class="kioto_tm_all_wrap" data-magic-cursor="show" data-enter="fadeInLeft" data-exit>
+
+    <div class="kioto_tm_topbar">
+        <div class="topbar_inner">
+            <div class="logo" data-type="image">
+                <a href="#">
+                    <img src="favicon.png" alt />
+                    <h3>KIOTO</h3>
+                </a>
+            </div>
+            <div class="trigger">
+                <div class="hamburger hamburger--slider">
+                    <div class="hamburger-box">
+                        <div class="hamburger-inner"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="kioto_tm_mobile_menu">
+        <div class="menu_list">
+            <ul class="transition_link">
+                @if (phayarsars is not null)
+                {
+                    @foreach (var phayarsar in phayarsars)
+                    {
+                        <li>
+                            <a href="javascript:void(0);" @onclick="@(() => OnPhayarsarClick(phayarsar.Title))">
+                                @phayarsar.Title
+                            </a>
+                        </li>
+                    }
+                }
+            </ul>
+        </div>
     </div>
 
-    <main>
-        <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
-        </div>
 
-        <article class="content px-4">
-            @Body
-        </article>
-    </main>
+    <div class="leftpart">
+        <div class="leftpart_inner">
+            <div class="logo" data-type="image">
+                <NavLink href="">
+                    <img src="favicon.png" alt />
+                    <h3>KIOTO</h3>
+                </NavLink>
+            </div>
+            <div class="menu">
+                <ul class="transition_link">
+                    @if (phayarsars is not null)
+                    {
+                        @foreach (var phayarsar in phayarsars)
+                        {
+                            <li>
+                                <a href="javascript:void(0);" @onclick="@(() => OnPhayarsarClick(phayarsar.Title))">
+                                    @phayarsar.Title
+                                </a>
+                            </li>
+                        }
+                    }
+                </ul>
+            </div>
+            <div class="copyright">
+                <p>
+                    &copy; 2024 Burma Blazor Team
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="rightpart">
+        <div class="rightpart_in">
+            <div class="container">
+                <div class="kioto_tm_about">
+                    @Body
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="mouse-cursor cursor-outer"></div>
+    <div class="mouse-cursor cursor-inner"></div>
+
 </div>
+
+@code {
+    private Phayarsars[]? phayarsars;
+
+    protected override async Task OnInitializedAsync()
+    {
+        phayarsars = await HttpClient.GetFromJsonAsync<Phayarsars[]>("data/data.json");
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await Task.Delay(1000);
+            var sourceUrls = new string[]
+               {
+                   "js/plugins.js",
+                    "js/contact.form.js",
+                    "js/init.js"
+               };
+            await JsRuntime.InvokeVoidAsync("loadJs", new
+            {
+                data = sourceUrls
+            });
+        }
+    }
+
+    public class Phayarsars
+    {
+        public string Title { get; set; }
+    }
+
+    private void OnPhayarsarClick(string title)
+    {
+        Navigation.NavigateTo($"/phayarsar/{title}");
+    }
+}
