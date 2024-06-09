@@ -1,0 +1,2436 @@
+@charset "utf-8";
+
+/*
+/*	Copyright (c) 2024 Marketify
+/*	Author: Marketify
+/*	This file is made for CURRENT TEMPLATE
+
+
+01)	KIOTO KIOTO BASE
+02) KIOTO MOBILE MENU
+03) KIOTO LEFTPART
+04) KIOTO RIGHTPART
+05) KIOTO HOME
+06) KIOTO ABOUT
+07) KIOTO SERVICES
+08) KIOTO PORTFOLIO
+09) KIOTO NEWS
+10) KIOTO CONTACT
+11) KIOTO MAGIC CURSOR
+12) KIOTO MEDIA QUERIES (FOR SMALL DEVICES)
+
+
+/*---------------------------------------------------*/
+/*	01) KIOTO BASE
+/*---------------------------------------------------*/
+@font-face {
+    font-family: "MyanmarAngoun";
+    src: url("../fonts/MyanmarAngoun.woff2");
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+    ul li {
+        margin: 0px;
+        padding: 0px;
+    }
+
+:root {
+    --bff: 'MyanmarAngoun', sans-serif;
+    --bc: #767676;
+}
+
+html {
+    overflow-x: hidden;
+    padding: 0px;
+    margin: 0px
+}
+
+body {
+    font-family: var(--bff);
+    font-size: 1rem;
+    line-height: 1.8;
+    letter-spacing: 0px;
+    word-wrap: break-word;
+    font-weight: 400;
+    background-color: #f9f9f9;
+    color: var(--bc);
+}
+
+    body::-webkit-scrollbar {
+        width: 0px;
+    }
+
+svg {
+    fill: currentcolor;
+    width: 15px;
+    height: 15px;
+}
+
+img.svg {
+    width: 15px;
+    height: 15px;
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: var(--bc);
+}
+
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: var(--bc);
+    opacity: 1;
+}
+
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: var(--bc);
+    opacity: 1;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: var(--bc);
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: var(--bc);
+}
+
+::placeholder { /* Most modern browsers support this now. */
+    color: var(--bc);
+}
+
+.container {
+    max-width: 1240px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    padding: 0px 20px;
+    position: relative;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    line-height: 1.3;
+    font-family: var(--bff);
+    color: #000;
+}
+
+h1 {
+    font-size: 45px;
+}
+
+h2 {
+    font-size: 36px;
+}
+
+h3 {
+    font-size: 30px;
+}
+
+h4 {
+    font-size: 24px;
+}
+
+h5 {
+    font-size: 20px;
+}
+
+h6 {
+    font-size: 16px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.kioto_tm_all_wrap {
+    width: 100%;
+    height: auto;
+    position: relative;
+}
+
+    .kioto_tm_all_wrap,
+    .kioto_tm_all_wrap * {
+        -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+        -moz-box-sizing: border-box; /* Firefox, other Gecko */
+        box-sizing: border-box; /* Opera/IE 8+ */
+    }
+
+#preloader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    z-index: 99999;
+    display: flex;
+}
+
+    #preloader:before,
+    #preloader:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 50%;
+        height: 100%;
+        z-index: -1;
+        background-color: #000;
+        -webkit-transition: all 0.3s ease 0s;
+        -o-transition: all 0.3s ease 0s;
+        transition: all 0.3s ease 0s;
+    }
+
+    #preloader:after {
+        left: auto;
+        right: 0;
+    }
+
+    #preloader .loader_line {
+        margin: auto;
+        width: 1px;
+        height: 250px;
+        position: relative;
+        overflow: hidden;
+        -webkit-transition: all 0.8s ease 0s;
+        -o-transition: all 0.8s ease 0s;
+        transition: all 0.8s ease 0s;
+    }
+
+.loader_line:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 1px;
+    height: 0%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    background-color: #fff;
+    -webkit-animation: lineheight 1000ms ease-in-out 0s forwards;
+    -o-animation: lineheight 1000ms ease-in-out 0s forwards;
+    animation: lineheight 1000ms ease-in-out 0s forwards;
+}
+
+.loader_line:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1px;
+    height: 100%;
+    background-color: #999999;
+    -webkit-transform: translateY(-100%);
+    -ms-transform: translateY(-100%);
+    -o-transform: translateY(-100%);
+    transform: translateY(-100%);
+    -webkit-animation: lineround 1200ms linear 0s infinite;
+    -o-animation: lineround 1200ms linear 0s infinite;
+    animation: lineround 1200ms linear 0s infinite;
+    animation-delay: 2000ms;
+}
+
+@keyframes lineheight {
+    0% {
+        height: 0%;
+    }
+
+    100% {
+        height: 100%;
+    }
+}
+
+@keyframes lineround {
+    0% {
+        -webkit-transform: translateY(-100%);
+        -ms-transform: translateY(-100%);
+        -o-transform: translateY(-100%);
+        transform: translateY(-100%);
+    }
+
+    100% {
+        -webkit-transform: translateY(200%);
+        -ms-transform: translateY(200%);
+        -o-transform: translateY(200%);
+        transform: translateY(200%);
+    }
+}
+
+/*hiding all*/
+.preloaded .loader_line:after {
+    opacity: 0;
+}
+
+.preloaded .loader_line {
+    opacity: 0;
+    height: 100% !important;
+}
+
+.preloaded:before,
+.preloaded:after {
+    -webkit-animation: preloadedzero 300ms ease-in-out 500ms forwards;
+    -o-animation: preloadedzero 300ms ease-in-out 500ms forwards;
+    animation: preloadedzero 300ms ease-in-out 500ms forwards;
+}
+
+@keyframes preloadedzero {
+    0% {
+        width: 50%;
+    }
+
+    100% {
+        width: 0%;
+    }
+}
+
+.abs_image {
+    position: relative;
+}
+
+    .abs_image img {
+        opacity: 0;
+        min-width: 100%;
+    }
+
+    .abs_image .main {
+        position: absolute;
+        top: 0px;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+.line_effect {
+    text-decoration: none;
+    color: currentColor;
+    display: inline-block;
+    position: relative;
+}
+
+    .line_effect:after {
+        content: '';
+        width: 0;
+        height: 1px;
+        position: absolute;
+        left: auto;
+        right: 0;
+        bottom: 3px;
+        transition: width .6s cubic-bezier(.25,.8,.25,1) 0s;
+        background: currentColor;
+    }
+
+    .line_effect:hover:after {
+        width: 100%;
+        left: 0;
+        right: auto;
+    }
+
+/*---------------------------------------------------*/
+/*	02) KIOTO MOBILE MENU
+/*---------------------------------------------------*/
+
+.kioto_tm_topbar {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    height: 50px;
+    background-color: #fff;
+    z-index: 14;
+    display: none;
+}
+
+    .kioto_tm_topbar .topbar_inner {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0px 20px;
+    }
+
+    .kioto_tm_topbar .logo img {
+        max-width: 100px;
+        max-height: 40px;
+    }
+
+    .kioto_tm_topbar .logo h3 {
+        font-weight: 900;
+        font-family: "Montserrat";
+        font-size: 25px;
+        letter-spacing: 4px;
+    }
+
+    .kioto_tm_topbar .logo[data-type="image"] img {
+        display: inline-block;
+    }
+
+    .kioto_tm_topbar .logo[data-type="image"] h3 {
+        display: none;
+    }
+
+    .kioto_tm_topbar .logo[data-type="text"] img {
+        display: none;
+    }
+
+    .kioto_tm_topbar .logo[data-type="text"] h3 {
+        display: inline-block;
+    }
+
+    .kioto_tm_topbar .hamburger {
+        padding: 0px;
+    }
+
+    .kioto_tm_topbar .hamburger-inner,
+    .kioto_tm_topbar .hamburger-inner:after,
+    .kioto_tm_topbar .hamburger-inner:before {
+        width: 30px;
+        height: 2px;
+    }
+
+    .kioto_tm_topbar .trigger {
+        position: relative;
+        top: 5px;
+    }
+
+    .kioto_tm_topbar .hamburger-box {
+        width: 30px;
+    }
+
+.kioto_tm_mobile_menu {
+    position: fixed;
+    top: 50px;
+    right: -200px;
+    height: 100vh;
+    width: 200px;
+    z-index: 15;
+    background-color: #fff;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+}
+
+    .kioto_tm_mobile_menu.opened {
+        right: 0px;
+    }
+
+    .kioto_tm_mobile_menu .menu_list {
+        width: 100%;
+        height: auto;
+        text-align: right;
+        padding: 100px 20px 0px 20px;
+    }
+
+        .kioto_tm_mobile_menu .menu_list ul {
+            margin: 0px;
+            list-style-type: none;
+        }
+
+            .kioto_tm_mobile_menu .menu_list ul li {
+                margin: 0px 0px 7px 0px;
+            }
+
+                .kioto_tm_mobile_menu .menu_list ul li a {
+                    color: #000;
+                }
+
+/*---------------------------------------------------*/
+/*	03) KIOTO LEFTPART
+/*---------------------------------------------------*/
+
+.kioto_tm_all_wrap .leftpart {
+    width: 400px;
+    height: 100vh;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    z-index: 12;
+    padding: 0px 100px;
+    background-color: #fff;
+}
+
+.kioto_tm_all_wrap .leftpart_inner {
+    width: 100%;
+    height: auto;
+}
+
+.kioto_tm_all_wrap .leftpart .logo img {
+    max-width: 150px;
+}
+
+.kioto_tm_all_wrap .leftpart .logo h3 {
+    font-family: "Montserrat";
+    font-weight: 900;
+    font-size: 31px;
+    letter-spacing: 5px;
+}
+
+.kioto_tm_all_wrap .leftpart .logo[data-type="image"] img {
+    display: inline-block;
+}
+
+.kioto_tm_all_wrap .leftpart .logo[data-type="image"] h3 {
+    display: none;
+}
+
+.kioto_tm_all_wrap .leftpart .logo[data-type="text"] img {
+    display: none;
+}
+
+.kioto_tm_all_wrap .leftpart .logo[data-type="text"] h3 {
+    display: inline-block;
+}
+
+.kioto_tm_all_wrap .leftpart .menu {
+    padding: 50px 0px 50px 0px;
+    width: 100%;
+}
+
+    .kioto_tm_all_wrap .leftpart .menu ul {
+        margin: 0px;
+        list-style-type: none;
+    }
+
+        .kioto_tm_all_wrap .leftpart .menu ul li {
+            margin: 0px 0px 10px 0px;
+            width: 100%;
+        }
+
+            .kioto_tm_all_wrap .leftpart .menu ul li:last-child {
+                margin-bottom: 0px;
+            }
+
+            .kioto_tm_all_wrap .leftpart .menu ul li a {
+                color: var(--bc);
+                display: block;
+                font-weight: 500;
+                font-size: 1rem;
+                text-transform: uppercase;
+                -webkit-transition: all .3s ease;
+                -moz-transition: all .3s ease;
+                -ms-transition: all .3s ease;
+                -o-transition: all .3s ease;
+                transition: all .3s ease;
+            }
+
+                .kioto_tm_all_wrap .leftpart .menu ul li a:hover {
+                    color: #000;
+                }
+
+            .kioto_tm_all_wrap .leftpart .menu ul li.active a {
+                color: #000;
+            }
+
+.kioto_tm_all_wrap .leftpart .copyright {
+    width: 100%;
+}
+
+    .kioto_tm_all_wrap .leftpart .copyright p {
+        font-size: 15px;
+        color: #999;
+        line-height: 25px;
+    }
+
+    .kioto_tm_all_wrap .leftpart .copyright a {
+        color: var(--bc);
+        font-weight: 500;
+        -webkit-transition: all .3s ease;
+        -moz-transition: all .3s ease;
+        -ms-transition: all .3s ease;
+        -o-transition: all .3s ease;
+        transition: all .3s ease;
+    }
+
+        .kioto_tm_all_wrap .leftpart .copyright a:hover {
+            color: #000;
+        }
+
+.dark .kioto_tm_all_wrap .leftpart {
+    background-color: #444;
+}
+
+    .dark .kioto_tm_all_wrap .leftpart .menu ul li a {
+        color: #bbb;
+    }
+
+    .dark .kioto_tm_all_wrap .leftpart .copyright p {
+        color: #bbb;
+    }
+
+    .dark .kioto_tm_all_wrap .leftpart .copyright a {
+        color: #bbb;
+    }
+
+        .dark .kioto_tm_all_wrap .leftpart .copyright a:hover {
+            color: #fff;
+        }
+
+    .dark .kioto_tm_all_wrap .leftpart .menu ul li.active a,
+    .dark .kioto_tm_all_wrap .leftpart .menu ul li :hover {
+        color: #fff;
+    }
+
+    .dark .kioto_tm_all_wrap .leftpart .logo h3 {
+        color: #fff;
+    }
+
+/*---------------------------------------------------*/
+/*	04) KIOTO RIGHTPART 
+/*---------------------------------------------------*/
+
+.kioto_tm_all_wrap .rightpart {
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    background-color: #f9f9f9;
+    padding-left: 400px;
+}
+
+.kioto_tm_all_wrap .rightpart_in {
+    position: relative;
+    width: 100%;
+    border-left: 1px solid #ebebeb;
+    min-height: 100vh;
+}
+
+.kioto_tm_section {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    overflow: hidden;
+    overflow-y: scroll;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 8;
+    transition: visibility 1s linear, opacity 0s linear;
+    -moz-transition: visibility 1s linear, opacity 0s linear;
+    -webkit-transition: visibility1s linear, opacity 0s linear;
+    -o-transition: visibility 1s linear, opacity 0s linear;
+}
+
+    .kioto_tm_section.animated {
+        opacity: 1;
+        visibility: visible;
+        z-index: 9;
+    }
+
+    .kioto_tm_section.active {
+        opacity: 1;
+        visibility: visible;
+        z-index: 10;
+    }
+
+    .kioto_tm_section.hidden {
+        opacity: 0;
+        visibility: hidden;
+        z-index: 9;
+    }
+
+    .kioto_tm_section::-webkit-scrollbar {
+        width: 0px;
+    }
+
+.tm_text_effect span {
+    display: block;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+}
+
+.tm_text_effect .wrapper {
+    overflow: hidden;
+    position: relative;
+}
+
+.tm_text_effect .after {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    transform: translateY(100%);
+}
+
+.tm_text_effect:hover .before {
+    transform: translateY(-100%);
+}
+
+.tm_text_effect:hover .after {
+    transform: translateY(0);
+}
+
+.kioto_tm_full_link {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+}
+
+.kioto_tm_button {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+}
+
+    .kioto_tm_button:before {
+        content: "";
+        position: absolute;
+        top: 0px;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        background-color: #000;
+        transform: translateY(100%);
+        pointer-events: none;
+        transition: all .3s ease;
+    }
+
+    .kioto_tm_button:hover:before {
+        transform: translateY(0);
+    }
+
+    .kioto_tm_button span {
+        color: #fff;
+        font-weight: 500;
+        font-size: 13px;
+        text-transform: uppercase;
+    }
+
+    .kioto_tm_button a {
+        display: block;
+        padding: 15px 35px;
+        background-color: #666;
+    }
+
+/*---------------------------------------------------*/
+/*	05) KIOTO HOME
+/*---------------------------------------------------*/
+
+.kioto_tm_home {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+    .kioto_tm_home .kioto_tm_button {
+        margin-top: 35px;
+    }
+
+    .kioto_tm_home h3 {
+        font-size: 45px;
+        font-weight: 700;
+        line-height: 1.3;
+        text-transform: uppercase;
+    }
+
+    .kioto_tm_home .name {
+        position: relative;
+        font-size: 17px;
+        margin-bottom: 12px;
+        text-transform: uppercase;
+        display: inline-block;
+    }
+
+    .kioto_tm_home .left {
+        width: 50%;
+    }
+
+    .kioto_tm_home .right {
+        width: 50%;
+        padding-left: 40px;
+        -webkit-perspective: 400px;
+        perspective: 400px;
+        ;
+    }
+
+    .kioto_tm_home .abs_image {
+        -webkit-transform: rotateY(-10deg);
+        transform: rotateY(-10deg);
+        max-width: 80%;
+    }
+
+        .kioto_tm_home .abs_image:before {
+            position: absolute;
+            content: "";
+            top: -15px;
+            left: 15px;
+            bottom: 15px;
+            right: -15px;
+            border: 1px solid rgba(0,0,0,.1);
+            z-index: -1;
+            transition: all .3s ease;
+        }
+
+    .kioto_tm_home .particle_wrapper {
+        position: absolute;
+        top: 0px;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+    }
+
+#particles-js {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+.kioto_tm_home video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cd-headline.clip .cd-words-wrapper::after {
+    width: 4px;
+    height: 60%;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #000;
+    opacity: 1;
+    animation: point 0.8s infinite;
+}
+
+@keyframes point {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/*---------------------------------------------------*/
+/*	06) KIOTO ABOUT
+/*---------------------------------------------------*/
+
+.kioto_tm_title {
+    width: 100%;
+}
+
+    .kioto_tm_title span {
+        display: inline-block;
+        position: relative;
+        text-transform: uppercase;
+        color: #000;
+        font-weight: 700;
+        font-size: 18px;
+        letter-spacing: 5px;
+    }
+
+.kioto_tm_about {
+    width: 100%;
+    padding: 100px 0px 110px 0px;
+}
+
+.kioto_tm_biography {
+    width: 100%;
+    display: flex;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    padding-bottom: 100px;
+    margin-bottom: 100px;
+}
+
+    .kioto_tm_biography .biography {
+        width: 50%;
+        padding-right: 50px;
+    }
+
+    .kioto_tm_biography .text {
+        margin-top: 50px;
+        margin-bottom: 30px;
+    }
+
+    .kioto_tm_biography .personal_details {
+        width: 50%;
+        padding-left: 50px;
+    }
+
+    .kioto_tm_biography .list {
+        width: 100%;
+        margin-top: 50px;
+    }
+
+        .kioto_tm_biography .list li {
+            margin-bottom: 6px;
+        }
+
+            .kioto_tm_biography .list li:last-child {
+                margin-bottom: 0px;
+            }
+
+        .kioto_tm_biography .list span:first-child {
+            color: #000;
+            font-weight: 500;
+            min-width: 140px;
+            display: inline-block;
+        }
+
+.kioto_tm_skills {
+    width: 100%;
+    display: flex;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    padding-bottom: 110px;
+    margin-bottom: 100px;
+}
+
+    .kioto_tm_skills .left {
+        width: 50%;
+        padding-right: 50px;
+    }
+
+    .kioto_tm_skills .right {
+        width: 50%;
+        padding-left: 50px;
+    }
+
+.kioto_progress {
+    width: 100%;
+    height: auto;
+    clear: both;
+    float: left;
+    margin-top: 52px;
+}
+
+.progress_inner {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+    .progress_inner:last-child {
+        margin-bottom: 0px;
+    }
+
+    .progress_inner > span {
+        margin: 0px 0px 5px 0px;
+        width: 100%;
+        display: block;
+        text-align: left;
+    }
+
+    .progress_inner span.number {
+        float: right;
+    }
+
+    .progress_inner .background {
+        background: rgba(0,0,0,.1);
+        width: 100%;
+        min-width: 100%;
+        position: relative;
+        height: 2px;
+    }
+
+        .progress_inner .background .bar_in {
+            height: 100%;
+            background: var(--bc);
+            width: 0px;
+            overflow: hidden;
+        }
+
+        .progress_inner .background .bar {
+            width: 0px;
+            height: 100%;
+        }
+
+            .progress_inner .background .bar.open {
+                -webkit-animation: wow 2s cubic-bezier(0.165, 0.840, 0.440, 1.000); /* Safari 4+ */
+                -moz-animation: wow 2s cubic-bezier(0.165, 0.840, 0.440, 1.000); /* Fx 5+ */
+                animation: wow 2s cubic-bezier(0.165, 0.840, 0.440, 1.000); /* IE 10+ */
+                width: 100%;
+            }
+
+@-webkit-keyframes wow {
+    0% {
+        width: 0%;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+@-moz-keyframes wow {
+    0% {
+        width: 0%;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+@keyframes wow {
+    0% {
+        width: 0%;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+.kioto_tm_features {
+    width: 100%;
+    display: flex;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    padding-bottom: 100px;
+    margin-bottom: 100px;
+}
+
+    .kioto_tm_features .list {
+        width: 100%;
+        margin-top: 50px;
+    }
+
+    .kioto_tm_features .left {
+        width: 50%;
+        padding-right: 50px;
+    }
+
+    .kioto_tm_features .right {
+        width: 50%;
+        padding-left: 50px;
+    }
+
+    .kioto_tm_features .list li {
+        margin-bottom: 6px;
+    }
+
+        .kioto_tm_features .list li:last-child {
+            margin-bottom: 0px;
+        }
+
+    .kioto_tm_features .list label {
+        padding-right: 7px;
+    }
+
+.kioto_tm_timeline {
+    width: 100%;
+    display: flex;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    padding-bottom: 100px;
+    margin-bottom: 100px;
+}
+
+    .kioto_tm_timeline .list {
+        width: 100%;
+        margin-top: 50px;
+    }
+
+    .kioto_tm_timeline .left {
+        width: 50%;
+        padding-right: 50px;
+    }
+
+    .kioto_tm_timeline .right {
+        width: 50%;
+        padding-left: 50px;
+    }
+
+    .kioto_tm_timeline li {
+        width: 100%;
+        border-bottom: 1px solid rgba(0,0,0,.1);
+        padding-bottom: 25px;
+        margin-bottom: 25px;
+    }
+
+        .kioto_tm_timeline li:last-child {
+            border-bottom: none;
+            padding-bottom: 0px;
+            margin-bottom: 0px;
+        }
+
+        .kioto_tm_timeline li .list_inner {
+            width: 100%;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .kioto_tm_timeline li .year span {
+            display: inline-block;
+            border: 1px solid rgba(0,0,0,.1);
+            padding: 5px 20px;
+        }
+
+        .kioto_tm_timeline li .info {
+            padding-right: 30px;
+        }
+
+            .kioto_tm_timeline li .info h3 {
+                font-size: 18px;
+            }
+
+.kioto_tm_counter {
+    width: 100%;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    padding-bottom: 80px;
+    margin-bottom: 100px;
+}
+
+    .kioto_tm_counter .list {
+        width: 100%;
+        margin-top: 60px;
+    }
+
+        .kioto_tm_counter .list ul {
+            margin-left: -30px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+            .kioto_tm_counter .list ul li {
+                width: 25%;
+                padding-left: 30px;
+                margin-bottom: 30px;
+            }
+
+                .kioto_tm_counter .list ul li .list_inner {
+                    width: 100%;
+                    border: 1px solid rgba(0,0,0,.1);
+                    padding: 20px;
+                    text-align: center;
+                }
+
+            .kioto_tm_counter .list ul h3 {
+                margin-bottom: 2px;
+                font-size: 25px;
+            }
+
+.kioto_tm_partners {
+    width: 100%;
+    margin-top: 40px;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    padding-bottom: 110px;
+    margin-bottom: 100px;
+}
+
+    .kioto_tm_partners .list {
+        width: 100%;
+        margin-top: 60px;
+    }
+
+    .kioto_tm_partners .in {
+        overflow: hidden;
+    }
+
+    .kioto_tm_partners ul {
+        display: flex;
+        margin-left: -30px;
+    }
+
+    .kioto_tm_partners li {
+        width: 100%;
+        margin-left: 30px;
+    }
+
+    .kioto_tm_partners .list_inner {
+        height: 100%;
+        text-align: center;
+        border: 1px solid rgba(0,0,0,.1);
+        padding: 32px 50px;
+        display: flex;
+        align-items: center;
+    }
+
+        .kioto_tm_partners .list_inner img {
+            max-height: 100px;
+        }
+
+.kioto_tm_members {
+    width: 100%;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    padding-bottom: 80px;
+    margin-bottom: 100px;
+}
+
+    .kioto_tm_members .list {
+        width: 100%;
+        margin-top: 60px;
+    }
+
+        .kioto_tm_members .list > ul {
+            margin-left: -30px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+            .kioto_tm_members .list > ul > li {
+                width: 33.3333%;
+                padding-left: 30px;
+                margin-bottom: 30px;
+            }
+
+                .kioto_tm_members .list > ul > li .list_inner {
+                    width: 100%;
+                    position: relative;
+                    border: 1px solid rgba(0,0,0,.1);
+                    padding: 10px;
+                }
+
+        .kioto_tm_members .list .abs_image {
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+    .kioto_tm_members .list_inner .abs_image:before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 3;
+        background: rgba(255,255,255,0.5);
+        content: '';
+        -webkit-transition: -webkit-transform 0.6s;
+        transition: transform 0.6s;
+        -webkit-transform: scale3d(3.9,1.4,1) rotate3d(0,0,1,45deg) translate3d(0,-100%,0);
+        transform: scale3d(3.9,1.4,1) rotate3d(0,0,1,45deg) translate3d(0,-100%,0);
+    }
+
+    .kioto_tm_members .list_inner .abs_image:hover:before {
+        -webkit-transform: scale3d(1.9,1.4,1) rotate3d(0,0,1,45deg) translate3d(0,100%,0);
+        transform: scale3d(3.9,1.4,1) rotate3d(0,0,1,45deg) translate3d(0,100%,0);
+    }
+
+    .kioto_tm_members .list ul .details {
+        border-top: 1px solid rgba(0,0,0,.1);
+        padding: 20px 20px 10px 20px;
+    }
+
+    .kioto_tm_members .list .name {
+        font-size: 18px;
+    }
+
+    .kioto_tm_members .list .job {
+        display: inline-block;
+        margin-bottom: 12px;
+    }
+
+.kioto_tm_testimonials {
+    width: 100%;
+}
+
+    .kioto_tm_testimonials .list {
+        width: 100%;
+        margin-top: 60px;
+    }
+
+        .kioto_tm_testimonials .list ul {
+            margin: 0px;
+            list-style-type: none;
+            cursor: e-resize;
+        }
+
+            .kioto_tm_testimonials .list ul li {
+                margin: 0px;
+            }
+
+                .kioto_tm_testimonials .list ul li .list_inner {
+                    width: 100%;
+                    height: auto;
+                    clear: both;
+                    float: left;
+                    position: relative;
+                    border: 1px solid rgba(0,0,0,.1);
+                    padding: 40px;
+                }
+
+                .kioto_tm_testimonials .list ul li .text {
+                    width: 100%;
+                    position: relative;
+                    border-bottom: 1px solid rgba(0,0,0,.1);
+                    padding-bottom: 30px;
+                    margin-bottom: 30px;
+                }
+
+    .kioto_tm_testimonials .details {
+        width: 100%;
+        height: auto;
+        clear: both;
+        float: left;
+        display: flex;
+        align-items: center;
+    }
+
+        .kioto_tm_testimonials .details .image {
+            position: relative;
+            width: 60px;
+            height: 60px;
+        }
+
+            .kioto_tm_testimonials .details .image .main {
+                position: absolute;
+                top: 0px;
+                bottom: 0px;
+                left: 0px;
+                right: 0px;
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center;
+                border-radius: 100%;
+            }
+
+        .kioto_tm_testimonials .details .info {
+            padding-left: 20px;
+        }
+
+            .kioto_tm_testimonials .details .info h3 {
+                font-size: 18px;
+                font-weight: 600;
+            }
+
+            .kioto_tm_testimonials .details .info span {
+                font-size: 14px;
+            }
+
+    .kioto_tm_testimonials .owl-carousel .owl-stage-outer {
+        overflow: hidden;
+    }
+
+    .kioto_tm_testimonials .owl-carousel .owl-stage-outer {
+        overflow: visible;
+    }
+
+    .kioto_tm_testimonials .owl-item.active {
+        opacity: 1;
+    }
+
+    .kioto_tm_testimonials .owl-item {
+        opacity: 0;
+    }
+
+/*---------------------------------------------------*/
+/*	07) KIOTO SERVICES
+/*---------------------------------------------------*/
+
+.kioto_tm_service {
+    width: 100%;
+    padding: 100px 0px 70px 0px;
+}
+
+    .kioto_tm_service .services_list {
+        width: 100%;
+        margin-top: 60px;
+    }
+
+        .kioto_tm_service .services_list > ul {
+            display: flex;
+            flex-wrap: wrap;
+            margin-left: -40px;
+        }
+
+            .kioto_tm_service .services_list > ul > li {
+                width: 33.3333%;
+                padding-left: 40px;
+                margin-bottom: 40px;
+            }
+
+        .kioto_tm_service .services_list .list_inner {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            padding: 45px 50px 42px 50px;
+            border: 1px solid rgba(0,0,0,.1);
+        }
+
+            .kioto_tm_service .services_list .list_inner .svg {
+                width: 40px;
+                height: 40px;
+                color: #999;
+                margin-bottom: 17px;
+            }
+
+        .kioto_tm_service .services_list .title {
+            font-size: 18px;
+        }
+
+        .kioto_tm_service .services_list .list {
+            width: 100%;
+            border-top: 1px solid rgba(0,0,0,.1);
+            margin-top: 29px;
+            padding-top: 25px;
+        }
+
+            .kioto_tm_service .services_list .list li {
+                width: 100%;
+                margin-bottom: 5px;
+                position: relative;
+                padding-left: 18px;
+            }
+
+                .kioto_tm_service .services_list .list li:last-child {
+                    margin-bottom: 0px;
+                }
+
+                .kioto_tm_service .services_list .list li:before {
+                    position: absolute;
+                    content: "";
+                    width: 6px;
+                    height: 6px;
+                    background-color: rgba(0,0,0,.15);
+                    border-radius: 100%;
+                    left: 0px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                }
+
+/*---------------------------------------------------*/
+/*	08) KIOTO PORTFOLIO
+/*---------------------------------------------------*/
+
+.kioto_tm_portfolio {
+    width: 100%;
+    padding: 95px 0px 80px 0px;
+}
+
+    .kioto_tm_portfolio .portfolio_title {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+
+        .kioto_tm_portfolio .portfolio_title .kioto_tm_title {
+            width: auto;
+        }
+
+.portfolio_filter li {
+    display: inline-block;
+    position: relative;
+    margin-left: 12px;
+}
+
+    .portfolio_filter li:first-child {
+        margin-left: 0px;
+    }
+
+    .portfolio_filter li:after {
+        position: relative;
+        content: "/";
+        margin-left: 15px;
+    }
+
+    .portfolio_filter li:last-child:after {
+        display: none;
+    }
+
+.portfolio_filter ul li {
+    display: inline-block;
+    position: relative;
+    margin-left: 12px;
+}
+
+    .portfolio_filter ul li a {
+        color: var(--bc);
+        display: inline-block;
+        transition: all .3s ease;
+    }
+
+        .portfolio_filter ul li a:hover,
+        .portfolio_filter ul li a.current {
+            color: #000;
+        }
+
+.kioto_tm_portfolio .portfolio_list {
+    width: 100%;
+    margin-top: 70px;
+}
+
+    .kioto_tm_portfolio .portfolio_list ul {
+        margin-left: -30px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+        .kioto_tm_portfolio .portfolio_list ul li {
+            width: 33.3333%;
+            padding-left: 30px;
+            margin-bottom: 30px;
+        }
+
+            .kioto_tm_portfolio .portfolio_list ul li .list_inner {
+                width: 100%;
+                position: relative;
+                border: 1px solid rgba(0,0,0,.1);
+                padding: 10px;
+            }
+
+            .kioto_tm_portfolio .portfolio_list ul li .abs_image:before {
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                z-index: 3;
+                background: rgba(255,255,255,0.5);
+                content: '';
+                -webkit-transition: -webkit-transform 0.6s;
+                transition: transform 0.6s;
+                -webkit-transform: scale3d(3.9,1.4,1) rotate3d(0,0,1,45deg) translate3d(0,-100%,0);
+                transform: scale3d(3.9,1.4,1) rotate3d(0,0,1,45deg) translate3d(0,-100%,0);
+            }
+
+            .kioto_tm_portfolio .portfolio_list ul li .list_inner .abs_image:hover:before {
+                -webkit-transform: scale3d(1.9,1.4,1) rotate3d(0,0,1,45deg) translate3d(0,100%,0);
+                transform: scale3d(3.9,1.4,1) rotate3d(0,0,1,45deg) translate3d(0,100%,0);
+            }
+
+    .kioto_tm_portfolio .portfolio_list .abs_image {
+        margin-bottom: 10px;
+        overflow: hidden;
+    }
+
+    .kioto_tm_portfolio .portfolio_list ul .details {
+        border-top: 1px solid rgba(0,0,0,.1);
+        padding: 20px 20px 10px 20px;
+    }
+
+    .kioto_tm_portfolio .portfolio_list .name {
+        font-size: 18px;
+    }
+
+        .kioto_tm_portfolio .portfolio_list .name a {
+            color: #000;
+        }
+
+    .kioto_tm_portfolio .portfolio_list .job a {
+        color: var(--bc);
+    }
+
+/*---------------------------------------------------*/
+/*	09) KIOTO NEWS
+/*---------------------------------------------------*/
+
+.kioto_tm_news {
+    width: 100%;
+    padding: 100px 0px;
+}
+
+    .kioto_tm_news .news_list {
+        width: 100%;
+        margin-top: 50px;
+    }
+
+        .kioto_tm_news .news_list > ul > li {
+            width: 100%;
+            border-bottom: 1px solid rgba(0,0,0,.1);
+            padding: 40px 0;
+            transition: .3s;
+            position: relative;
+        }
+
+        .kioto_tm_news .news_list > ul:hover > li {
+            opacity: .4;
+        }
+
+            .kioto_tm_news .news_list > ul:hover > li:hover {
+                opacity: 1;
+            }
+
+        .kioto_tm_news .news_list > ul > li:first-child {
+            padding-top: 0px;
+        }
+
+        .kioto_tm_news .news_list > ul > li:last-child {
+            border-bottom: none;
+            padding-bottom: 0px;
+            margin-bottom: 0px;
+        }
+
+        .kioto_tm_news .news_list .list_inner {
+            width: 100%;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .kioto_tm_news .news_list .title {
+            width: 50%;
+        }
+
+            .kioto_tm_news .news_list .title h3 {
+                font-size: 24px;
+            }
+
+                .kioto_tm_news .news_list .title h3 a {
+                    display: inline-block;
+                    color: #000;
+                }
+
+.kioto_tm_metabox {
+    width: 50%;
+    text-align: right;
+    padding-left: 50px;
+    transition: all .3s ease;
+}
+
+    .kioto_tm_metabox li {
+        display: inline-block;
+        position: relative;
+        margin-left: 12px;
+    }
+
+        .kioto_tm_metabox li:first-child {
+            margin-left: 0px;
+        }
+
+        .kioto_tm_metabox li:after {
+            position: relative;
+            content: "/";
+            margin-left: 12px;
+        }
+
+        .kioto_tm_metabox li:last-child:after {
+            display: none;
+        }
+
+        .kioto_tm_metabox li a {
+            color: #000;
+        }
+
+.hover_image {
+    width: 400px;
+    position: fixed;
+    right: 180px;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-perspective: 400px;
+    perspective: 400px;
+    ;
+    z-index: 11;
+    transition: .3s;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none
+}
+
+    .hover_image .img.active {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    .hover_image .img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        opacity: 0;
+        transform: scale(0.95);
+        transition: .5s;
+    }
+
+    .hover_image .abs_image {
+        -webkit-transform: rotateY(-10deg);
+        transform: rotateY(-10deg);
+    }
+
+        .hover_image .abs_image .main:before {
+            position: absolute;
+            content: "";
+            top: -15px;
+            left: 15px;
+            bottom: 15px;
+            right: -15px;
+            border: 1px solid rgba(0,0,0,.1);
+            z-index: -1;
+            transition: all .3s ease;
+        }
+
+.kioto_tm_news .news_image {
+    display: none;
+    position: absolute;
+    z-index: -11;
+}
+
+/*---------------------------------------------------*/
+/*	10) KIOTO CONTACT
+/*---------------------------------------------------*/
+
+.kioto_tm_contact {
+    width: 100%;
+    padding: 100px 0px 110px 0px;
+}
+
+    .kioto_tm_contact .info_list {
+        width: 100%;
+        margin-top: 60px;
+    }
+
+        .kioto_tm_contact .info_list > ul {
+            display: flex;
+            flex-wrap: wrap;
+            margin-left: -40px;
+        }
+
+            .kioto_tm_contact .info_list > ul > li {
+                width: 25%;
+                padding-left: 40px;
+                margin-bottom: 40px;
+            }
+
+                .kioto_tm_contact .info_list > ul > li .list_inner {
+                    width: 100%;
+                    height: 100%;
+                    position: relative;
+                    border: 1px solid rgba(0,0,0,.1);
+                    padding: 20px;
+                    text-align: center;
+                }
+
+                .kioto_tm_contact .info_list > ul > li span {
+                    display: block;
+                }
+
+            .kioto_tm_contact .info_list > ul > li {
+                display: block;
+            }
+
+        .kioto_tm_contact .info_list .icon {
+            width: 25px;
+            height: 25px;
+            margin-bottom: 5px;
+        }
+
+.kioto_tm_social ul li {
+    display: inline-block;
+    margin-right: 3px;
+}
+
+    .kioto_tm_social ul li:last-child {
+        margin-right: 0px;
+    }
+
+    .kioto_tm_social ul li a {
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        position: relative;
+        border: 1px solid rgba(0,0,0,.1);
+        color: var(--bc);
+        transition: all .3s ease;
+    }
+
+    .kioto_tm_social ul li .svg {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        width: 12px;
+        height: 12px;
+    }
+
+    .kioto_tm_social ul li a:hover {
+        color: #000;
+        border-color: #000;
+    }
+
+.kioto_tm_contact .form_wrapper {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+    .kioto_tm_contact .form_wrapper ul {
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: -15px;
+    }
+
+        .kioto_tm_contact .form_wrapper ul li {
+            width: 50%;
+            padding-left: 15px;
+            margin-bottom: 15px;
+        }
+
+            .kioto_tm_contact .form_wrapper ul li input,
+            .kioto_tm_contact .form_wrapper ul li select {
+                width: 100%;
+                height: 50px;
+                padding: 5px 20px;
+                background-color: transparent;
+                font-family: var(--bff);
+                color: var(--bc);
+                border: 1px solid rgba(0,0,0,.1);
+            }
+
+            .kioto_tm_contact .form_wrapper ul li select {
+                padding-left: 15px;
+            }
+
+                .kioto_tm_contact .form_wrapper ul li input:focus,
+                .kioto_tm_contact .form_wrapper ul li select:focus,
+                .kioto_tm_contact .form_wrapper textarea:focus,
+                .kioto_tm_contact .enter_code input:focus {
+                    outline: none;
+                }
+
+    .kioto_tm_contact .form_wrapper textarea {
+        padding: 20px;
+        height: 120px;
+        background-color: transparent;
+        resize: none;
+        font-family: var(--bff);
+        border: 1px solid rgba(0,0,0,.1);
+    }
+
+.kioto_tm_contact #enter_code {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+    .kioto_tm_contact #enter_code span {
+        display: inline-block;
+        height: 50px;
+        line-height: 50px;
+        color: #fff;
+        background-color: #666;
+        padding: 0px 30px;
+    }
+
+    .kioto_tm_contact #enter_code input {
+        display: inline-block;
+        height: 50px;
+        line-height: 50px;
+        background-color: transparent;
+        padding: 0px 20px;
+        font-family: var(--bff);
+        border: 1px solid rgba(0,0,0,.1);
+    }
+
+.kioto_tm_contact input::-webkit-outer-spin-button,
+.kioto_tm_contact input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+.kioto_tm_contact input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.error_box {
+    width: 100%;
+    background-color: #fce3e3;
+    padding: 20px 10px;
+    text-align: center;
+    margin-bottom: 10px;
+    display: none;
+}
+
+    .error_box p {
+        color: #721c24;
+    }
+
+.success_box {
+    width: 100%;
+    display: none;
+    background-color: #0ac083;
+    padding: 20px 10px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+    .success_box p {
+        color: #fff;
+    }
+
+.error .cf-form-control {
+    border-bottom: 1px solid red !important;
+}
+
+.error select {
+    border-bottom: 1px solid red !important;
+}
+
+.success .cf-form-control {
+    border-bottom: 1px solid green !important;
+}
+
+.success select {
+    border-bottom: 1px solid green !important;
+}
+
+#text-area-w {
+    width: 100%;
+    margin-bottom: 9px;
+}
+
+.mapouter {
+    filter: grayscale(1);
+    transition: all .3s ease;
+}
+
+    .mapouter:hover {
+        filter: grayscale(0);
+    }
+
+/*---------------------------------------------------*/
+/*	11) KIOTO MAGIC CURSOR
+/*---------------------------------------------------*/
+
+.mouse-cursor {
+    position: fixed;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    border-radius: 50%;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    visibility: hidden;
+}
+
+.cursor-inner {
+    margin-left: -3px;
+    margin-top: -3px;
+    width: 6px;
+    height: 6px;
+    z-index: 100;
+    background-color: #000;
+    -webkit-transition: width .3s ease-in-out, height .3s ease-in-out, margin .3s ease-in-out, opacity .3s ease-in-out;
+    transition: width .3s ease-in-out, height .3s ease-in-out, margin .3s ease-in-out, opacity .3s ease-in-out;
+}
+
+    .cursor-inner.cursor-hover {
+        margin-left: -40px;
+        margin-top: -40px;
+        width: 80px;
+        height: 80px;
+        background-color: #000;
+        opacity: .3;
+    }
+
+.cursor-outer {
+    margin-left: -15px;
+    margin-top: -15px;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #000;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    z-index: 100;
+    opacity: .5;
+    -webkit-transition: all .08s ease-out;
+    transition: all .08s ease-out;
+}
+
+    .cursor-outer.cursor-hover {
+        opacity: 0;
+    }
+
+.kioto_tm_all_wrap[data-magic-cursor="hide"] .mouse-cursor {
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    z-index: -1111;
+}
+
+/*---------------------------------------------------*/
+/*	ERLING INTRO PAGE
+/*---------------------------------------------------*/
+
+.kioto_tm_intro {
+    width: 100%;
+}
+
+    .kioto_tm_intro .hero {
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid rgba(0,0,0,.1);
+        padding: 130px 20px;
+    }
+
+        .kioto_tm_intro .hero img {
+            margin-bottom: 30px;
+        }
+
+        .kioto_tm_intro .hero span {
+            font-size: 20px;
+            display: block;
+        }
+
+    .kioto_tm_intro .demos {
+        width: 100%;
+        max-width: 1100px;
+        margin: 0px auto;
+        margin-bottom: 50px;
+    }
+
+        .kioto_tm_intro .demos ul {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0px 0px 0px -50px;
+        }
+
+            .kioto_tm_intro .demos ul li {
+                margin-bottom: 50px;
+                padding-left: 50px;
+                width: 50%;
+                text-align: center;
+            }
+
+                .kioto_tm_intro .demos ul li .list_inner {
+                    width: 100%;
+                    position: relative;
+                    border: 1px solid rgba(0,0,0,.1);
+                    -webkit-transition: all .3s ease;
+                    -moz-transition: all .3s ease;
+                    -ms-transition: all .3s ease;
+                    -o-transition: all .3s ease;
+                    transition: all .3s ease;
+                }
+
+                    .kioto_tm_intro .demos ul li .list_inner:hover {
+                        background-color: #f4f4f4;
+                    }
+
+        .kioto_tm_intro .demos .image {
+            padding: 20px;
+        }
+
+        .kioto_tm_intro .demos .details {
+            width: 100%;
+            border-top: 1px solid rgba(0,0,0,.1);
+            padding: 20px;
+            -webkit-transition: all .3s ease;
+            -moz-transition: all .3s ease;
+            -ms-transition: all .3s ease;
+            -o-transition: all .3s ease;
+            transition: all .3s ease;
+        }
+
+            .kioto_tm_intro .demos .details h3 {
+                font-size: 15px;
+                text-transform: uppercase;
+                -webkit-transition: all .3s ease;
+                -moz-transition: all .3s ease;
+                -ms-transition: all .3s ease;
+                -o-transition: all .3s ease;
+                transition: all .3s ease;
+            }
+
+        .kioto_tm_intro .demos ul li .list_inner:hover .details {
+            background-color: #f8f8f8;
+        }
+
+        .kioto_tm_intro .demos .details h3 span {
+            color: red;
+            font-weight: 700;
+            position: relative;
+            top: -11px;
+            left: 5px;
+            font-size: 13px;
+        }
+
+    .kioto_tm_intro .features_wrapper {
+        width: 100%;
+        border-top: 1px solid rgba(0,0,0,.1);
+        margin-bottom: 50px;
+    }
+
+        .kioto_tm_intro .features_wrapper .f_inner {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0px auto;
+        }
+
+    .kioto_tm_intro .main_title {
+        width: 100%;
+        text-align: center;
+        margin: 100px 20px 50px 20px;
+    }
+
+        .kioto_tm_intro .main_title h3 {
+            font-size: 20px;
+            text-transform: uppercase;
+        }
+
+    .kioto_tm_intro .features_wrapper ul {
+        margin: 0px 0px 0px -50px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+        .kioto_tm_intro .features_wrapper ul li {
+            width: 50%;
+            padding-left: 50px;
+            margin-bottom: 50px;
+        }
+
+            .kioto_tm_intro .features_wrapper ul li .list_inner {
+                width: 100%;
+                height: 100%;
+                border: 1px solid rgba(0,0,0,.1);
+                text-align: center;
+                padding: 50px;
+            }
+
+            .kioto_tm_intro .features_wrapper ul li h3 {
+                font-size: 15px;
+                text-transform: uppercase;
+                margin-bottom: 15px;
+            }
+
+            .kioto_tm_intro .features_wrapper ul li .svg {
+                width: 40px;
+                height: 40px;
+                margin-bottom: 25px;
+            }
+
+            .kioto_tm_intro .features_wrapper ul li a {
+                color: #000;
+            }
+
+    .kioto_tm_intro .copyright {
+        width: 100%;
+        border-top: 1px solid rgba(0,0,0,.1);
+        padding: 60px 20px;
+        text-align: center;
+    }
+
+        .kioto_tm_intro .copyright a {
+            color: #000;
+        }
+
+/*---------------------------------------------------*/
+/*	12) KIOTO MEDIA QUERIES (FOR SMALL DEVIVES)
+/*---------------------------------------------------*/
+
+@media (max-width: 1600px) {
+    .container {
+        max-width: 968px;
+    }
+
+    .kioto_tm_all_wrap .rightpart {
+        padding-left: 350px;
+    }
+
+    .kioto_tm_all_wrap .leftpart {
+        width: 350px;
+        padding: 0px 70px;
+    }
+
+    .kioto_tm_home h3 {
+        font-size: 31px;
+    }
+
+    .kioto_tm_home .abs_image {
+        max-width: 75%;
+    }
+
+    .kioto_tm_news .news_list .title h3 {
+        font-size: 21px;
+    }
+
+    .hover_image {
+        width: 300px;
+        right: 75px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .container {
+        max-width: 100%;
+    }
+
+    .mouse-cursor {
+        display: none;
+    }
+
+    .kioto_tm_topbar {
+        display: block;
+    }
+
+    .kioto_tm_section {
+        padding-left: 0px;
+    }
+
+    .kioto_tm_all_wrap .leftpart {
+        display: none;
+    }
+
+    .kioto_tm_all_wrap .rightpart {
+        padding-left: 0px;
+    }
+
+    .kioto_tm_all_wrap .rightpart_in {
+        border-left: none;
+    }
+
+    .kioto_tm_home {
+        flex-direction: column-reverse;
+    }
+
+        .kioto_tm_home .right {
+            width: 100%;
+            padding-left: 0px;
+            margin-bottom: 50px;
+        }
+
+        .kioto_tm_home .abs_image {
+            max-width: 300px;
+        }
+
+        .kioto_tm_home .left {
+            width: 100%;
+        }
+
+        .kioto_tm_home .name {
+            font-size: 14px;
+        }
+
+        .kioto_tm_home h3 {
+            font-size: 35px;
+        }
+
+        .kioto_tm_home .abs_image {
+            transform: rotate(0deg) !important;
+        }
+
+    .kioto_tm_biography {
+        flex-direction: column;
+    }
+
+        .kioto_tm_biography .biography {
+            width: 100%;
+            padding-right: 0px;
+            margin-bottom: 60px;
+        }
+
+        .kioto_tm_biography .personal_details {
+            width: 100%;
+            padding-left: 0px;
+        }
+
+    .kioto_tm_skills {
+        flex-direction: column;
+    }
+
+        .kioto_tm_skills .left {
+            width: 100%;
+            padding-right: 0px;
+            margin-bottom: 60px;
+        }
+
+        .kioto_tm_skills .right {
+            width: 100%;
+            padding-left: 0px;
+        }
+
+    .kioto_tm_features {
+        flex-direction: column;
+    }
+
+        .kioto_tm_features .left {
+            width: 100%;
+            padding-right: 0px;
+            margin-bottom: 60px;
+        }
+
+        .kioto_tm_features .right {
+            width: 100%;
+            padding-left: 0px;
+        }
+
+    .kioto_tm_timeline {
+        flex-direction: column;
+    }
+
+        .kioto_tm_timeline .left {
+            width: 100%;
+            padding-right: 0px;
+            margin-bottom: 60px;
+        }
+
+        .kioto_tm_timeline .right {
+            width: 100%;
+            padding-left: 0px;
+        }
+
+    .kioto_tm_counter .list ul li {
+        width: 50%;
+    }
+
+    .kioto_tm_members .list > ul > li {
+        width: 50%;
+    }
+
+    .kioto_tm_service .services_list > ul > li {
+        width: 50%;
+    }
+
+    .kioto_tm_portfolio .portfolio_title {
+        flex-direction: column;
+        align-items: baseline;
+    }
+
+    .portfolio_filter {
+        margin-top: 50px;
+    }
+
+    .kioto_tm_portfolio .portfolio_list {
+        margin-top: 30px;
+    }
+
+        .kioto_tm_portfolio .portfolio_list ul li {
+            width: 50%;
+        }
+
+    .hover_image {
+        display: none !important;
+        z-index: -111 !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+    }
+
+    .kioto_tm_news .news_list .list_inner {
+        flex-direction: column-reverse;
+    }
+
+    .kioto_tm_metabox {
+        width: 100%;
+        text-align: left;
+        padding-left: 0px;
+        margin-bottom: 15px;
+    }
+
+    .kioto_tm_news .news_list .title {
+        width: 100%;
+    }
+
+    .kioto_tm_contact .info_list > ul > li {
+        width: 50%;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .kioto_tm_home h3 {
+        font-size: 25px;
+    }
+
+    .kioto_tm_home .right {
+        margin-bottom: 35px;
+    }
+
+    .kioto_tm_home .kioto_tm_button {
+        margin-top: 25px;
+    }
+
+    .kioto_tm_home .abs_image {
+        max-width: 220px;
+    }
+
+    .kioto_tm_biography .list span:first-child {
+        min-width: auto;
+    }
+
+    .kioto_tm_counter .list ul {
+        margin-left: 0px;
+    }
+
+        .kioto_tm_counter .list ul li {
+            width: 100%;
+            padding-left: 0px;
+        }
+
+    .kioto_tm_members .list > ul {
+        margin-left: 0px;
+    }
+
+        .kioto_tm_members .list > ul > li {
+            width: 100%;
+            padding-left: 0px;
+        }
+
+    .kioto_tm_service .services_list > ul {
+        margin-left: 0px;
+    }
+
+        .kioto_tm_service .services_list > ul > li {
+            width: 100%;
+            padding-left: 0px;
+        }
+
+    .kioto_tm_portfolio .portfolio_list ul {
+        margin-left: 0px;
+    }
+
+        .kioto_tm_portfolio .portfolio_list ul li {
+            width: 100%;
+            padding-left: 0px;
+        }
+
+    .kioto_tm_contact .info_list > ul > li {
+        width: 100%;
+        padding-left: 0px;
+    }
+
+    .kioto_tm_contact .info_list > ul {
+        margin-left: 0px;
+    }
+
+    .kioto_tm_contact .form_wrapper ul {
+        margin-left: 0px;
+    }
+
+        .kioto_tm_contact .form_wrapper ul li {
+            width: 100%;
+            padding-left: 0px;
+        }
+
+    .kioto_tm_intro .demos ul {
+        margin: 0px;
+    }
+
+        .kioto_tm_intro .demos ul li {
+            width: 100%;
+            padding-left: 0px;
+        }
+
+    .kioto_tm_intro .features_wrapper ul {
+        margin: 0px;
+    }
+
+        .kioto_tm_intro .features_wrapper ul li {
+            width: 100%;
+            padding-left: 0px;
+        }
+}
