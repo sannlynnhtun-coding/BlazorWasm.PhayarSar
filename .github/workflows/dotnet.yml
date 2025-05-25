@@ -34,6 +34,7 @@ jobs:
       run: npm install -g vercel@latest
 
     - name: Deploy to Vercel
-      run: vercel deploy --prod --yes --token=${{ secrets.VERCEL_TOKEN }}
+      run: vercel deploy --prod --yes --token=${{ secrets.VERCEL_TOKEN }} blazor-wasm-phayarsar
       env:
+        VERCEL_TELEMETRY_DISABLED: 1
         VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
