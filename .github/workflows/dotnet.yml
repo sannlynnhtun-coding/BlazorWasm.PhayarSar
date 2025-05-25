@@ -21,6 +21,7 @@ jobs:
       with:
         dotnet-version: 8.0.x
         cache: true  # Enables caching of NuGet packages
+        cache-dependency-path: packages.lock.json
 
     - name: Restore dependencies
       run: dotnet restore
