@@ -1,4 +1,3 @@
-// vercel.json
 {
   "build": {
     "command": "echo 'No build needed for static WASM deployment'",
