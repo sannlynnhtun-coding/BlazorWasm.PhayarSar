@@ -851,7 +851,8 @@ a {
 
 .kioto_tm_about {
     width: 100%;
-    padding: 100px 0px 110px 0px;
+    /*padding: 100px 0px 110px 0px;*/
+    padding: 70px 0px 110px 0px;
 }
 
 .kioto_tm_biography {
@@ -2433,4 +2434,8 @@ a {
             width: 100%;
             padding-left: 0px;
         }
+}
+
+h4 {
+    padding-bottom: 10px;
 }
